@@ -4,7 +4,7 @@ import cors from "cors";
 const app = express();
 const port = 3002;
 
-app.use(cors());
+app.use(cors()); // allowing cors policy
 
 app.get("/", async (_, res) => {
   const _res = await fetch("https://api.jsonserve.com/Uw5CrX");
