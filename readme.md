@@ -16,7 +16,7 @@ This is a **web-based quiz application** built using **React.js (Vite) for the f
 
 ### 🎮 Gamification Features
 
-- Streak bonus for consecutive correct answers
+- Streak bonus for consecutive correct answers (TODO)
 - User-friendly UI with progress visualization
 - Answer validation with color coding
 
@@ -31,8 +31,8 @@ This is a **web-based quiz application** built using **React.js (Vite) for the f
 ### 1️⃣ Clone the Repository
 
 ```sh
-git clone https://github.com/yourusername/quiz-app.git
-cd quiz-app
+git clone https://github.com/masked-redhat/testline-quiz-application.git
+cd testline-quiz-application
 ```
 
 ### 2️⃣ Install Dependencies
