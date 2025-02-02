@@ -69,13 +69,12 @@ This will start the **React app** on `http://localhost:5173`
 ```sh
 docker compose up
 ```
+This will start the **Application** on `http://localhost:3000`
 
 #### Hosting:
 
 This application has been hosted on **Render**
 View it [here](https://testline-quiz-application.onrender.com/)
-
-This will start the **Application** on `http://localhost:3000`
 
 ## 📂 Project Structure
 
