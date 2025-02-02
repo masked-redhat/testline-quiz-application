@@ -53,7 +53,9 @@ const review = (question, number, totals) => {
     <section className="flex gap-3 flex-col my-3">
       <header className="flex gap-2 flex-col">
         <span className="text-lg font-sen font-extralight text-gray-600">
-          Question <span className="text-3xl font-black text-black">{number}</span>/{totals}
+          Question{" "}
+          <span className="text-3xl font-black text-black">{number}</span>/
+          {totals}
         </span>
         <h2 className="font-sen text-xl flex items-center py-1">
           {question?.description}
@@ -83,6 +85,10 @@ const review = (question, number, totals) => {
             {option?.is_correct ? (
               <p className="font-jost text-[10px] absolute bg-green-500 text-white py-0.5 px-1.5 rounded-full -right-2.5">
                 ✓
+              </p>
+            ) : option?.id == question?.answerId ? (
+              <p className="font-jost text-[10px] flex justify-center items-center text-center absolute bg-red-500 text-white py-0.5 px-1.5 rounded-full -right-[12px]">
+                ✖
               </p>
             ) : null}
           </span>
