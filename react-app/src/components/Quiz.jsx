@@ -49,6 +49,7 @@ const Quiz = () => {
 
   return (
     <div className="flex flex-col gap-3 w-[800px]">
+      <ProgressBar questions={questions} cqp={cqp} />
       <Question
         data={questions?.[cqp] ?? {}}
         mark={markQuestionAnswered}
@@ -78,6 +79,23 @@ const Quiz = () => {
           Next &rarr;
         </button>
       </div>
+    </div>
+  );
+};
+
+const ProgressBar = ({ questions, cqp }) => {
+  return (
+    <div className="flex items-center w-[80%] mx-auto relative justify-evenly">
+      <div className="absolute bg-gray-300 h-1 rounded-full w-full -z-10"></div>
+      {questions?.map((question, index) => (
+        <div
+          className={`rounded-full transition-all ${
+            cqp === index ? "bg-gray-600" : "bg-gray-300"
+          } ${question?.answered ?? false ? "bg-green-500" : "bg-gray-300"} ${
+            cqp === index ? "h-4 w-4" : "h-3 w-3"
+          }`}
+        ></div>
+      ))}
     </div>
   );
 };
