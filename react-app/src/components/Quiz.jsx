@@ -113,6 +113,12 @@ const Question = ({ data, mark, submitted }) => {
           ) : (
             <p className="text-red-500">Unanswered</p>
           )}
+          {submitted ? (
+            <p className="ml-auto">
+              Point Scored :{" "}
+              {data?.answered ?? false ? (data.correct ? 4 : -1) : 0}
+            </p>
+          ) : null}
         </div>
       </header>
       <section className="flex flex-col gap-3 font-jost font-semibold text-lg">
