@@ -92,6 +92,12 @@ const review = (question, number, totals) => {
             ) : null}
           </span>
         ))}
+        <span className="font-light">
+          Point Scored :{" "}
+          <span className="font-semibold">
+            {question.answered ?? false ? (question.correct ? 4 : -1) : 0}
+          </span>
+        </span>
       </section>
     </section>
   );
