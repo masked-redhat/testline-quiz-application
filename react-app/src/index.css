@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zen+Dots&family=Jost:ital,wght@0,100..900;1,100..900&family=Sen:wght@400..800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+    --font-zen: "Zen Dots", "sans-serif";
+    --font-urban: "Urbanist", "sans-serif";
+    --font-sen: "Sen", "sans-serif";
+    --font-jost: "Jost", "sans-serif";
+}
