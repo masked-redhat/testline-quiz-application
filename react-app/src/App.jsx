@@ -14,10 +14,13 @@ function App() {
 
   // Load quiz data
   useEffect(() => {
-    const res = fetch("/data"); // promises
-    const data = res.then((data) => data.json());
+    const fetchData = async () => {
+      const res = await fetch("/data"); // async await
+      const data = await res.json();
 
-    data.then((_data) => setQuizData(_data)); // set data
+      setQuizData(data); // set data
+    };
+    fetchData();
   }, []);
 
   return (
