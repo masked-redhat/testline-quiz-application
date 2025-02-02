@@ -83,6 +83,18 @@ const Quiz = () => {
 };
 
 const Question = ({ data, mark, submitted }) => {
+  const styleWhenNotSubmitted = (optionId, answerId) => {
+    return optionId == answerId ? "border-green-500" : "border-gray-200";
+  };
+
+  const styleWhenSubmitted = (isCorrect, optionId, answerId) => {
+    return isCorrect
+      ? "border-green-500"
+      : optionId == answerId
+      ? "border-red-500"
+      : "border-gray-200";
+  };
+
   return (
     <form
       className="flex gap-3 flex-col"
@@ -108,25 +120,32 @@ const Question = ({ data, mark, submitted }) => {
           <button
             key={option?.id}
             className={`px-4 py-3 bg-gray-200 cursor-pointer rounded-md disabled:cursor-default border-2 ${
-              option?.id == data?.answerId
-                ? "border-green-500"
-                : "border-gray-200"
-            }`}
+              submitted
+                ? styleWhenSubmitted(
+                    option?.is_correct,
+                    option?.id,
+                    data?.answerId
+                  )
+                : styleWhenNotSubmitted(option?.id, data?.answerId)
+            } ${submitted ? "relative" : ""}`}
             disabled={submitted} // if submitted, disabled
             onClick={() => {
               mark(data?.id, option?.is_correct, option?.id);
             }}
           >
             {option.description}
+            {submitted ? (
+              option?.is_correct ? (
+                <p className="tick">✓</p>
+              ) : option?.id == data?.answerId ? (
+                <p className="cross">✖</p>
+              ) : null
+            ) : null}
           </button>
         ))}
       </section>
     </form>
   );
-};
-
-const handleAnswer = (option) => {
-  console.log(option);
 };
 
 export default Quiz;
