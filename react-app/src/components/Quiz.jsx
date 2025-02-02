@@ -7,7 +7,6 @@ const Quiz = () => {
   const setData = useSetQuizData();
   const [cqp, setcqp] = useState(0); // current question position
   const [questions, setQuestions] = useState([]); // questions
-  const [answered, setAnswered] = useState([]); // answered questions
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -81,9 +80,7 @@ const Quiz = () => {
   );
 };
 
-const Question = ({ data, answered, setAnswered, mark }) => {
-  const _data = useQuizData();
-  console.log(data);
+const Question = ({ data, mark }) => {
   return (
     <form
       className="flex gap-3 flex-col"
