@@ -1,5 +1,6 @@
 import React from "react";
 import { useQuizData } from "../App";
+import { NavLink } from "react-router";
 
 const Result = () => {
   const data = useQuizData();
@@ -18,93 +19,29 @@ const Result = () => {
   };
 
   return (
-    <div>
+    <div className="flex justify-center items-center flex-col">
       {data?.submitted ?? false ? (
-        <p className="text-2xl font-sen py-4">
-          You have acquired{" "}
-          <span className="font-black text-5xl px-2">{getResults()}</span>{" "}
-          points in this quiz
-        </p>
+        <>
+          <p className="text-2xl font-sen py-4">
+            You have acquired{" "}
+            <span className="font-black text-5xl px-2">{getResults()}</span>{" "}
+            points in this quiz
+          </p>
+          <NavLink to={"/quiz"} className="landing-button">
+            Review
+          </NavLink>
+        </>
       ) : (
         <>
           <p className="text-2xl font-sen py-4">
             You have never attempted the quiz.
           </p>
-          <button className="landing-button">Start Quiz</button>
+          <NavLink to={"/quiz"} className="landing-button">
+            Start Quiz
+          </NavLink>
         </>
       )}
-      {data === null ? null : data.submitted !== true ? null : (
-        <section className="mt-3">
-          <header>
-            <h2 className="text-xl font-sen font-black">Summary : </h2>
-          </header>
-          <div className="w-[800px]">
-            {data?.questions.map((question, index) => {
-              return (
-                <>
-                  {review(question, index + 1, data?.questions.length)}
-                  {index !== data?.questions.length - 1 ? (
-                    <hr className="my-10" />
-                  ) : null}
-                </>
-              );
-            })}
-          </div>
-        </section>
-      )}
     </div>
-  );
-};
-
-const review = (question, number, totals) => {
-  return (
-    <section className="flex gap-3 flex-col my-3">
-      <header className="flex gap-2 flex-col">
-        <span className="text-lg font-sen font-extralight text-gray-600">
-          Question{" "}
-          <span className="text-3xl font-black text-black">{number}</span>/
-          {totals}
-        </span>
-        <h2 className="font-sen text-xl flex items-center py-1">
-          {question?.description}
-        </h2>
-        <div className="flex gap-5 font-sen">
-          <p>{question?.topic}</p>
-          {question?.answered ? (
-            <p className="text-green-500">Answered</p>
-          ) : (
-            <p className="text-red-500">Unanswered</p>
-          )}
-        </div>
-      </header>
-      <section className="flex flex-col gap-3 font-jost font-semibold text-base">
-        {question?.options?.map((option) => (
-          <span
-            key={option?.id}
-            className={`px-4 py-3 relative bg-gray-200 flex justify-center items-center rounded-md border-2 ${
-              option?.is_correct
-                ? "border-green-500"
-                : option?.id == question?.answerId
-                ? "border-red-500"
-                : "border-gray-200"
-            }`}
-          >
-            {option.description}
-            {option?.is_correct ? (
-              <p className="tick">✓</p>
-            ) : option?.id == question?.answerId ? (
-              <p className="cross">✖</p>
-            ) : null}
-          </span>
-        ))}
-        <span className="font-light">
-          Point Scored :{" "}
-          <span className="font-semibold">
-            {question.answered ?? false ? (question.correct ? 4 : -1) : 0}
-          </span>
-        </span>
-      </section>
-    </section>
   );
 };
 
