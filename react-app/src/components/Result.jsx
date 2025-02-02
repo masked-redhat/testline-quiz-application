@@ -31,10 +31,9 @@ const Result = () => {
           </header>
           <div className="w-[800px]">
             {data?.questions.map((question, index) => {
-              console.log(index);
               return (
                 <>
-                  {review(question, index + 1, data?.questions.length + 1)}
+                  {review(question, index + 1, data?.questions.length)}
                   {index !== data?.questions.length - 1 ? (
                     <hr className="my-10" />
                   ) : null}

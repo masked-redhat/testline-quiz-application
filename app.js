@@ -16,8 +16,8 @@ app.get("/data", async (_, res) => {
   res.status(200).json(data);
 });
 
-app.get("*", (_, res) => {
-  res.sendFile("index.html");
+app.get("/*", (_, res) => {
+  res.sendFile("index.html", { root: "./react-app/dist" });
 });
 
 app.listen(port, () => {
