@@ -73,7 +73,7 @@ docker compose up
 #### Hosting:
 
 This application has been hosted on **Render**
-View it (here)[https://testline-quiz-application.onrender.com/]
+View it [here](https://testline-quiz-application.onrender.com/)
 
 This will start the **Application** on `http://localhost:3000`
 
