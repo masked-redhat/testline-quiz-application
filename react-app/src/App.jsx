@@ -14,7 +14,7 @@ function App() {
 
   // Load quiz data
   useEffect(() => {
-    const res = fetch("http://localhost:3002"); // promises
+    const res = fetch("/data"); // promises
     const data = res.then((data) => data.json());
 
     data.then((_data) => setQuizData(_data)); // set data
