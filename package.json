@@ -16,5 +16,8 @@
         "cors": "^2.8.5",
         "express": "^4.21.2",
         "testline-internship-task": "file:"
+    },
+    "devDependencies": {
+        "dotenv": "^16.4.7"
     }
 }
