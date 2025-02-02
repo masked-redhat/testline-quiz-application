@@ -26,7 +26,7 @@ function App() {
   return (
     <QuizDataContext.Provider value={quizData}>
       <Header />
-      <main className="h-full min-h-[84vh] flex flex-col items-center justify-center gap-3">
+      <main className="main">
         <SetQuizDataContext.Provider value={setQuizData}>
           <Outlet />
         </SetQuizDataContext.Provider>

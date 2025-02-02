@@ -82,11 +82,11 @@ const review = (question, number, totals) => {
           >
             {option.description}
             {option?.is_correct ? (
-              <p className="font-jost text-[10px] absolute bg-green-500 text-white py-0.5 px-1.5 rounded-full -right-2.5">
+              <p className="tick">
                 ✓
               </p>
             ) : option?.id == question?.answerId ? (
-              <p className="font-jost text-[10px] flex justify-center items-center text-center absolute bg-red-500 text-white py-0.5 px-1.5 rounded-full -right-[12px]">
+              <p className="cross">
                 ✖
               </p>
             ) : null}

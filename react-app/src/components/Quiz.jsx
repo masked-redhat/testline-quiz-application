@@ -62,7 +62,7 @@ const Quiz = () => {
         </button>
         <button
           onClick={submit}
-          className="button-renext bg-green-500 text-white hover:bg-green-400"
+          className="submit"
         >
           Submit
         </button>
