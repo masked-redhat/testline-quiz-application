@@ -19,12 +19,21 @@ const Result = () => {
 
   return (
     <div>
-      <p className="text-2xl font-sen py-4">
-        You have acquired{" "}
-        <span className="font-black text-5xl px-2">{getResults()}</span> points
-        in this quiz
-      </p>
-      {data === null ? null : (
+      {data?.submitted ?? false ? (
+        <p className="text-2xl font-sen py-4">
+          You have acquired{" "}
+          <span className="font-black text-5xl px-2">{getResults()}</span>{" "}
+          points in this quiz
+        </p>
+      ) : (
+        <>
+          <p className="text-2xl font-sen py-4">
+            You have never attempted the quiz.
+          </p>
+          <button className="landing-button">Start Quiz</button>
+        </>
+      )}
+      {data === null ? null : data.submitted !== true ? null : (
         <section className="mt-3">
           <header>
             <h2 className="text-xl font-sen font-black">Summary : </h2>
@@ -82,13 +91,9 @@ const review = (question, number, totals) => {
           >
             {option.description}
             {option?.is_correct ? (
-              <p className="tick">
-                ✓
-              </p>
+              <p className="tick">✓</p>
             ) : option?.id == question?.answerId ? (
-              <p className="cross">
-                ✖
-              </p>
+              <p className="cross">✖</p>
             ) : null}
           </span>
         ))}

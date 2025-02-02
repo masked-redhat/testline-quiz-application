@@ -28,6 +28,7 @@ const Quiz = () => {
   const submit = () => {
     const _data = { ...data };
     _data.questions = questions;
+    _data.submitted = true;
     setData(_data);
     navigate("/result"); // navigate to results
   };
@@ -51,6 +52,7 @@ const Quiz = () => {
       <Question
         data={questions?.[cqp] ?? {}}
         mark={markQuestionAnswered}
+        submitted={data?.submitted ?? false}
       />
       <div className="flex justify-between gap-2">
         <button
@@ -61,10 +63,12 @@ const Quiz = () => {
           &larr; Previous
         </button>
         <button
-          onClick={submit}
+          onClick={
+            data?.submitted ?? false ? () => navigate("/result") : submit
+          }
           className="submit"
         >
-          Submit
+          {data?.submitted ?? false ? "Results" : "Submit"}
         </button>
         <button
           onClick={forwardQuestion}
@@ -78,7 +82,7 @@ const Quiz = () => {
   );
 };
 
-const Question = ({ data, mark }) => {
+const Question = ({ data, mark, submitted }) => {
   return (
     <form
       className="flex gap-3 flex-col"
@@ -108,6 +112,7 @@ const Question = ({ data, mark }) => {
                 ? "border-green-500"
                 : "border-gray-200"
             }`}
+            disabled={submitted} // if submitted, disabled
             onClick={() => {
               mark(data?.id, option?.is_correct, option?.id);
             }}
