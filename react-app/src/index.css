@@ -8,3 +8,9 @@
     --font-sen: "Sen", "sans-serif";
     --font-jost: "Jost", "sans-serif";
 }
+
+@layer components {
+    .button-renext {
+        @apply cursor-pointer px-6 py-2 text-lg font-sen bg-gray-100 rounded-md disabled:text-gray-400 select-none disabled:cursor-not-allowed
+    }
+}
