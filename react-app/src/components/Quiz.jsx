@@ -125,7 +125,7 @@ const Question = ({ data, mark, submitted }) => {
         {data?.options?.map((option) => (
           <button
             key={option?.id}
-            className={`px-4 py-3 bg-gray-200 cursor-pointer rounded-md disabled:cursor-default border-2 ${
+            className={`option-button ${
               submitted
                 ? styleWhenSubmitted(
                     option?.is_correct,
@@ -133,7 +133,7 @@ const Question = ({ data, mark, submitted }) => {
                     data?.answerId
                   )
                 : styleWhenNotSubmitted(option?.id, data?.answerId)
-            } ${submitted ? "relative" : ""}`}
+            } ${submitted ? "relative" : "hover:bg-gray-100"}`}
             disabled={submitted} // if submitted, disabled
             onClick={() => {
               mark(data?.id, option?.is_correct, option?.id);
