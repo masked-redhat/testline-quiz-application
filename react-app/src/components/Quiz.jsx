@@ -50,8 +50,6 @@ const Quiz = () => {
     <div className="flex flex-col gap-3 w-[800px]">
       <Question
         data={questions?.[cqp] ?? {}}
-        answered={answered}
-        setAnswered={setAnswered}
         mark={markQuestionAnswered}
       />
       <div className="flex justify-between gap-2">
